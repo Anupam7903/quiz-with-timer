@@ -11,7 +11,7 @@ int main(void)
 
     FILE *fp;
     char c;
-    fp = fopen("questions.txt","r");
+   
 
     while(TRUE)
     {
@@ -19,7 +19,7 @@ int main(void)
        
         printf("%2d \n",time_left);
         time_left--;
-       
+        fp = fopen("questions.txt","r");
         c = fgetc(fp);
         while(TRUE)
         {
