@@ -5,13 +5,15 @@
 //#include"qmaker.h"
 
 #define TRUE 1
-#define MAX_TIME 30;
-//#define K "question5.txt"
+#define MAX_TIME 30
 
-//char * qm(int a)
+//char * qm(int a);
+void showoff(int t);
+void fileprint(char file_name[25]);
+
 int main(void)
 {
-    int time_left = MAX_TIME
+    int time_left = MAX_TIME;
     int i,min = 00, pass_time = 5;
     char A[25][50]={"question1.txt","question2.txt","question3.txt","question4.txt","question5.txt",
                     "question6.txt","question7.txt","question8.txt","question9.txt","question10.txt",
@@ -28,31 +30,15 @@ int main(void)
     while(TRUE)
     {
         system("cls");
+
         strcpy(file_name,A[i]);
-        //file_name = qm(i);
-        if(time_left > 9)
-        {
-            printf("\t\t\t\t\t*********************\n");
-            printf("\t\t\t\t\t**    TIME LEFT    **\n");
-            printf("\t\t\t\t\t*********************\n");
-            printf("\t\t\t\t\t** ");
-            printf("     %d : %d     **\n",min,time_left);
-            printf("\t\t\t\t\t*********************\n");
-        }
-        else
-        {
-            printf("\t\t\t\t\t*********************\n");
-            printf("\t\t\t\t\t**    TIME LEFT    **\n");
-            printf("\t\t\t\t\t*********************\n");
-            printf("\t\t\t\t\t** ");
-            printf("    %2d : %d      **\n",min,time_left);
-            printf("\t\t\t\t\t*********************\n"); 
-        }    
+        showoff(time_left);
         printf("\n");
        
         time_left--;
        
-        fp = fopen(file_name,"r");
+        fileprint(file_name);
+        /*fp = fopen(file_name,"r");
        
         while(TRUE)
         {
@@ -63,8 +49,8 @@ int main(void)
              if(c == '$')            //for new line
              printf("\n");
              else
-             printf("%c",c);;
-        }
+             printf("%c",c);
+        }*/
        /* if(time_left != -1)
         {
             printf("\nYour answer : ");
@@ -95,3 +81,60 @@ int main(void)
     return 0;
 }
 
+/*char * qm(int a)
+{
+    char b[25];
+    char A[25][50]={"question1.txt","question2.txt","question3.txt","question4.txt","question5.txt",
+                    "question6.txt","question7.txt","question8.txt","question9.txt","question10.txt",
+                    "question11.txt","question12.txt","question13.txt","question14.txt","question15.txt",
+                    "question16.txt","question17.txt","question18.txt","question19.txt","question20.txt",
+                    "question21.txt","question22.txt","question23.txt","question24.txt","question25.txt",
+                    "question26.txt","question27.txt","question28.txt","question29.txt","question30.txt"};
+
+    strcpy(b,A[a]);
+    return A[a];
+}*/
+
+void showoff(int t)
+{
+    int min = 0;
+    if(t > 9)
+        {
+            printf("\t\t\t\t\t*********************\n");
+            printf("\t\t\t\t\t**    TIME LEFT    **\n");
+            printf("\t\t\t\t\t*********************\n");
+            printf("\t\t\t\t\t** ");
+            printf("     %d : %d     **\n",min,t);
+            printf("\t\t\t\t\t*********************\n");
+        }
+        else
+        {
+            printf("\t\t\t\t\t*********************\n");
+            printf("\t\t\t\t\t**    TIME LEFT    **\n");
+            printf("\t\t\t\t\t*********************\n");
+            printf("\t\t\t\t\t** ");
+            printf("    %2d : %d      **\n",min,t);
+            printf("\t\t\t\t\t*********************\n"); 
+        }
+}
+
+void fileprint(char file_name[25])
+{
+    FILE *fp;
+    char c;
+    fp = fopen(file_name,"r");
+
+    while(TRUE)
+        {
+             c = fgetc(fp);
+             if(c == EOF)
+             break;
+       
+             if(c == '$')            //for new line
+             printf("\n");
+             else
+             printf("%c",c);
+
+        }
+
+}
